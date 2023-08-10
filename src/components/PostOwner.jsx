@@ -1,3 +1,9 @@
-export const PostOwner = ({}) => {
-  return <div>Your code here...</div>;
+export const PostOwner = (props) => {
+  return (
+    <span className="fw-semibold fs-5 text-white">
+      <div>
+        {props.name} {props.studentId}
+      </div>
+    </span>
+  );
 };

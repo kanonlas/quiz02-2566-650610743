@@ -1,5 +1,9 @@
 "use client";
 
+import { Comment } from "@/components/Comment";
+import { PostOwner } from "@/components/PostOwner";
+import { comments } from "@/libs/comments";
+
 export default function HomePage() {
   return (
     <div
@@ -15,15 +19,17 @@ export default function HomePage() {
         <div className="vstack gap-3">
           <div className="d-flex align-items-center gap-3">
             <img
-              src="/profileImages/handsome.jpg"
+              src="/profileImages/bananacat.jpg"
               width="48"
               height="48"
               className="rounded-circle"
               style={{ objectFit: "cover" }}
             />
-            <span className="fw-semibold fs-5 text-white">
-              Chayanin Suatap 650610560
-            </span>
+
+            <PostOwner
+              name="Kanonlas Rattanapak"
+              studentId="650610743"
+            ></PostOwner>
           </div>
 
           <span className="text-white">
@@ -36,7 +42,6 @@ export default function HomePage() {
           </div>
           <hr className="m-0 border" />
         </div>
-
         {/* Comment Example */}
         <div className="d-flex gap-2 my-2">
           <img
@@ -46,6 +51,7 @@ export default function HomePage() {
             className="rounded-circle"
             style={{ objectFit: "cover" }}
           />
+
           <div
             className="rounded rounded-3 p-2"
             style={{ backgroundColor: "#3A3B3C" }}
@@ -61,7 +67,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
         {/* Reply Example */}
         <div className="d-flex gap-2 my-2 ps-5">
           <img
@@ -86,6 +91,17 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        {comments.map((x) => (
+          <Comment
+            key={x.username}
+            userImagePath={x.userImagePath}
+            username={x.username}
+            commentText={x.commentText}
+            likeNum={x.likeNum}
+            replies={x.replies}
+          ></Comment>
+        ))}
 
         {/* map-loop render Comment component here */}
       </div>
